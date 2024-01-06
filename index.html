@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>START</title>
+    <style>
+        /* 样式和布局 */
+        body {
+            background-color:black;
+            display:flexbox;
+            flex-direction: column;
+            text-align: center;
+            align-items: center
+            justify-content:center;
+            margin: 60px 20px;
+            font-family:sans-serif, Arial;
+        }
+        h1{color:white;
+        font-size: 40px;}
+        .button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color:black;
+            padding: 10px 20px;
+            margin-top: 40px;
+            text-decoration:none;
+            font-size: 30px;
+            border-radius: 5px;
+        }
+        .button :hover{text-decoration:underline;}
+    
+    </style>
+</head>
+<body>
+    <h1>Images & Meanings Survey<br>of Chinese Pictograms</h1>
+    
+    <script>
+        // 从本地存储中获取访问次数
+        var visitCount = localStorage.getItem("visitCount");
+        
+        // 如果访问次数不存在，则初始化为0
+        if (!visitCount) {
+            visitCount = 0;
+        }
+        
+        // 模拟增加访问次数的函数
+        function increaseCount() {
+            visitCount++;
+            // 将访问次数存储到本地存储中
+            localStorage.setItem("visitCount", visitCount);
+            
+            // 根据访问次数的个位数显示不同的问卷链接
+            var lastDigit = visitCount % 10;
+            var surveyLink = "";
+            
+            if (lastDigit === 0 || lastDigit === 1 || lastDigit === 5 || lastDigit === 9) {
+                surveyLink = "https://forms.gle/cotWYxLcWcxC54Yw6";
+            } else if (lastDigit === 2 || lastDigit === 6) {
+                surveyLink = "https://forms.gle/oCPQ4ehavFekb2449";
+            } else if (lastDigit === 3 || lastDigit === 7) {
+                surveyLink = "https://forms.gle/TrqJtwjmd1Rzj3Yv6";
+            } else if (lastDigit === 4 || lastDigit === 8) {
+                surveyLink = "问卷D的链接";
+            }
+            
+            // 设置按钮的超链接
+            document.getElementById("survey-button").href = surveyLink;
+            
+            // 点击按钮后，隐藏按钮
+            document.getElementById("survey-button").style.display = "none";
+        }
+    </script>
+    
+    <a href="#" id="survey-button" class="button" onclick="increaseCount();"><strong>START</strong></a>
+</body>
+</html>
