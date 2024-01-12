@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>START</title>
+    <style>
+        /* 样式和布局 */
+        body {
+            background-color:rgb(167, 187, 206);
+            display:flexbox;
+            flex-direction: column;
+            text-align: center;
+            align-items: center
+            justify-content:center;
+            
+            font-family:sans-serif, Arial;
+        }
+        h1{color:rgb(14, 51, 131);
+        font-size: 400%;
+        padding: 0;
+        margin: 5% 2.5% 10%;
+    }
+        .button {
+            display: inline-block;
+            background-color:rgb(14, 51, 131);
+            color:white;
+            padding: 2.5% 5%;
+            margin: 0 0 10%;
+            
+            text-decoration:none;
+            font-size: 450%;
+            border-radius: 10px;
+        }
+        .button :hover{text-decoration:underline;}
+    /*響應式設計語法*/
+    @media screen and (max-width: 768px) {
+        h1{font-size: 220%;
+            padding: 0 0 0;
+            margin: 20% 0 15%;}
+        .button{margin-top: 0;
+            font-size: 250%;}
+       
+    }*/
+    
+        
+    }
+    </style>
+</head>
+<body>
+    <h1>Images & Meanings Survey<br>of Chinese Pictograms</h1>
+    
+    <script>
+        // 从本地存储中获取访问次数
+        var visitCount = localStorage.getItem("visitCount");
+        
+        // 如果访问次数不存在，则初始化为0
+        /*if (!visitCount) {
+            visitCount = 0;
+        }*/
+        
+        // 模拟增加访问次数的函数
+        function increaseCount() {
+            visitCount++;
+            // 将访问次数存储到本地存储中
+            localStorage.setItem("visitCount", visitCount);
+            
+            // 根据访问次数的个位数显示不同的问卷链接
+            var lastDigit = visitCount % 10;
+            var surveyLink = "";
+            
+            if (lastDigit === 0 || lastDigit === 1 || lastDigit === 5 || lastDigit === 9) {
+                surveyLink = "https://forms.office.com/r/wQqAy4GFe0";
+            } else if (lastDigit === 2 || lastDigit === 6) {
+                surveyLink = "https://forms.office.com/r/ivUUynTV4X";
+            } else if (lastDigit === 3 || lastDigit === 7) {
+                surveyLink = "https://forms.office.com/r/g7bkfMGEa7";
+            } else if (lastDigit === 4 || lastDigit === 8) {
+                surveyLink = "https://forms.office.com/r/6Z0dkAumwj";
+            }
+            
+            // 设置按钮的超链接
+            document.getElementById("survey-button").href = surveyLink;
+            
+            // 点击按钮后，隐藏按钮
+            document.getElementById("survey-button").style.display = "none";
+        }
+    </script>
+    
+    <a href="#" id="survey-button" class="button" onclick="increaseCount();"><strong>ENTER</strong></a>
+</body>
+</html>
